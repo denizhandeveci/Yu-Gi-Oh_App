@@ -1,10 +1,12 @@
-package com.Yu_Gi_Oh_App.duel_simulator.entities;
+package com.Yu_Gi_Oh_App.duel_simulator.entities.parents;
 
 import com.Yu_Gi_Oh_App.duel_simulator.enums.CardType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
 
+@MappedSuperclass
 public class Card {
+    @Id
     private String name;
     private static boolean isAlive;
     private static boolean inGraveYard;

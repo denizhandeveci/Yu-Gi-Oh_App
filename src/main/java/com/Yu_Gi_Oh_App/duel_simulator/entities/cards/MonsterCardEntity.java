@@ -1,5 +1,6 @@
-package com.Yu_Gi_Oh_App.duel_simulator.entities;
+package com.Yu_Gi_Oh_App.duel_simulator.entities.cards;
 
+import com.Yu_Gi_Oh_App.duel_simulator.entities.parents.Card;
 import com.Yu_Gi_Oh_App.duel_simulator.enums.CardPosition;
 import com.Yu_Gi_Oh_App.duel_simulator.enums.CardType;
 import jakarta.persistence.Column;
