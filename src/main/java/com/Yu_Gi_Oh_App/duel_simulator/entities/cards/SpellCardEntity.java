@@ -1,14 +1,22 @@
 package com.Yu_Gi_Oh_App.duel_simulator.entities.cards;
 
-import com.Yu_Gi_Oh_App.duel_simulator.entities.parents.Card;
 import com.Yu_Gi_Oh_App.duel_simulator.enums.CardType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "spell_card")
+@Table(name = "spell_cards")
 public class SpellCardEntity extends CardEntity {
 
+    @Override
+    public Long getId() {
+        return super.getId();
+    }
+
+    @Override
+    public void setId(Long id) {
+        super.setId(id);
+    }
 
     public SpellCardEntity() {
 

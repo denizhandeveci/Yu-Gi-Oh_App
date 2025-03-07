@@ -1,15 +1,20 @@
 package com.Yu_Gi_Oh_App.duel_simulator.entities.player;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.Yu_Gi_Oh_App.duel_simulator.entities.deck.DeckEntity;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "players")
 public class PlayerEntity {
     @Id
+    @Column(name = "id")
     private Long id;
-    private String firstName;
-    private String lastName;
+    @Column(name = "user_name")
+    private String userName;
+    @OneToMany
+    @JoinColumn(name = "deck_id")
+    private List<DeckEntity> deck;
 
 }

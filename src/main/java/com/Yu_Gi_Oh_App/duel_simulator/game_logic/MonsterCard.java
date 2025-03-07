@@ -1,4 +1,4 @@
-package com.Yu_Gi_Oh_App.duel_simulator.entities.game_logic;
+package com.Yu_Gi_Oh_App.duel_simulator.game_logic;
 
 import com.Yu_Gi_Oh_App.duel_simulator.enums.CardPosition;
 import com.Yu_Gi_Oh_App.duel_simulator.enums.CardType;
@@ -10,6 +10,11 @@ public class MonsterCard extends Card {
 
     public MonsterCard() {
 
+    }
+
+    public MonsterCard(int attackPoints, int defensePoints) {
+        this.attackPoints = attackPoints;
+        this.defensePoints = defensePoints;
     }
 
 

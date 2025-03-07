@@ -1,7 +1,5 @@
 package com.Yu_Gi_Oh_App.duel_simulator.entities.cards;
 
-import com.Yu_Gi_Oh_App.duel_simulator.entities.parents.Card;
-import com.Yu_Gi_Oh_App.duel_simulator.enums.CardPosition;
 import com.Yu_Gi_Oh_App.duel_simulator.enums.CardType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -14,6 +12,16 @@ public class MonsterCardEntity extends CardEntity {
     private int attack;
     @Column(name="defense")
     private int defense;
+
+    @Override
+    public Long getId() {
+        return super.getId();
+    }
+
+    @Override
+    public void setId(Long id) {
+        super.setId(id);
+    }
 
     public MonsterCardEntity(){
 

@@ -1,19 +1,25 @@
 package com.Yu_Gi_Oh_App.duel_simulator.entities.cards;
 
 import com.Yu_Gi_Oh_App.duel_simulator.enums.CardType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class CardEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     @Column(name = "name")
     private String name;
-    @Column(name = "is_alive")
-    private boolean isAlive;
-    @Column(name = "in_grave_yard")
-    private boolean inGraveYard;
     @Column(name = "card_content")
     private String cardContent;
     @Column(name = "card_type")
@@ -30,22 +36,6 @@ public class CardEntity {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public boolean isIsAlive() {
-        return isAlive;
-    }
-
-    public void setIsAlive(boolean isAlive) {
-        this.isAlive = isAlive;
-    }
-
-    public boolean isInGraveYard() {
-        return inGraveYard;
-    }
-
-    public void setInGraveYard(boolean inGraveYard) {
-        this.inGraveYard = inGraveYard;
     }
 
     public String getCardContent() {

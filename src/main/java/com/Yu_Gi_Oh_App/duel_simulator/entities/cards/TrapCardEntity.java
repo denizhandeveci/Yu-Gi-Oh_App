@@ -1,6 +1,5 @@
 package com.Yu_Gi_Oh_App.duel_simulator.entities.cards;
 
-import com.Yu_Gi_Oh_App.duel_simulator.entities.parents.Card;
 import com.Yu_Gi_Oh_App.duel_simulator.enums.CardType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -12,6 +11,16 @@ public class TrapCardEntity extends CardEntity {
 
     public TrapCardEntity(){
 
+    }
+
+    @Override
+    public Long getId() {
+        return super.getId();
+    }
+
+    @Override
+    public void setId(Long id) {
+        super.setId(id);
     }
 
     @Override

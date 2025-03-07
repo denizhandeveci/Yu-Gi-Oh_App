@@ -1,4 +1,4 @@
-package com.Yu_Gi_Oh_App.duel_simulator.entities.game_logic;
+package com.Yu_Gi_Oh_App.duel_simulator.game_logic;
 
 import com.Yu_Gi_Oh_App.duel_simulator.enums.CardType;
 
@@ -14,10 +14,6 @@ public abstract class Card {
     }
     // takes in Player player, Game game
     public abstract void activateEffect();
-
-
-
-
 
 
 
