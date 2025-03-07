@@ -7,7 +7,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "spell_card")
-public class SpellCardEntity extends Card {
+public class SpellCardEntity extends CardEntity {
 
 
     public SpellCardEntity() {

@@ -9,13 +9,11 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name="monster_cards")
-public class MonsterCardEntity extends Card {
+public class MonsterCardEntity extends CardEntity {
     @Column(name="attack")
     private int attack;
     @Column(name="defense")
     private int defense;
-    @Column(name="card_position")
-    private CardPosition cardPosition;
 
     public MonsterCardEntity(){
 
@@ -67,11 +65,4 @@ public class MonsterCardEntity extends Card {
         this.defense = defense;
     }
 
-    public CardPosition getCardPosition() {
-        return cardPosition;
-    }
-
-    public void setCardPosition(CardPosition cardPosition) {
-        this.cardPosition = cardPosition;
-    }
 }

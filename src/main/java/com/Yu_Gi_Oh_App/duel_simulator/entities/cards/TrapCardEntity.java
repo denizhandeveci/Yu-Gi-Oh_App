@@ -7,7 +7,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name ="trap_cards")
-public class TrapCardEntity extends Card {
+public class TrapCardEntity extends CardEntity {
 
 
     public TrapCardEntity(){

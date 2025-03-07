@@ -10,5 +10,5 @@ import jakarta.persistence.Table;
 public class DeckEntity {
     @Id
     private Long id;
-    private Card card;
+   // private Card card;
 }
