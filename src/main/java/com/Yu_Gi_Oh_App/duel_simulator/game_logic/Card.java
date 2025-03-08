@@ -16,8 +16,6 @@ public abstract class Card {
     public abstract void activateEffect();
 
 
-
-
     public Long getId() {
         return id;
     }

@@ -6,6 +6,8 @@ import com.Yu_Gi_Oh_App.duel_simulator.mappers.MonsterCardMapper;
 import com.Yu_Gi_Oh_App.duel_simulator.repositories.MonsterCardRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Random;
+
 @Service
 public class CardService {
     private final MonsterCardRepository monsterCardRepository;
@@ -23,5 +25,12 @@ public class CardService {
     public MonsterCardEntity createMonsterCard(MonsterCard monsterCard) {
         MonsterCardEntity monsterCardEntity = monsterCardMapper.toMonsterCardEntity(monsterCard);
         return monsterCardRepository.save(monsterCardEntity);
+    }
+
+    public MonsterCardEntity getRandomMonsterCard() {
+        Long dataTableSize = monsterCardRepository.count();
+        Random random = new Random();
+        Long selectedId = random.nextLong(1,(dataTableSize+1));
+        return monsterCardRepository.findById(selectedId).orElse(null);
     }
 }

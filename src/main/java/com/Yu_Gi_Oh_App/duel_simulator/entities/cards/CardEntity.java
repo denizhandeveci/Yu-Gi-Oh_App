@@ -3,12 +3,24 @@ package com.Yu_Gi_Oh_App.duel_simulator.entities.cards;
 import com.Yu_Gi_Oh_App.duel_simulator.enums.CardType;
 import jakarta.persistence.*;
 
-@Entity
-public class CardEntity {
+@MappedSuperclass
+public abstract class CardEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
+    @Column(name = "name")
+    private String name;
+    @Column(name = "card_content")
+    private String cardContent;
+    @Column(name = "card_type")
+    @Enumerated(EnumType.STRING)
+    private CardType cardType;
+
+    public CardEntity(){
+
+    }
+
 
     public Long getId() {
         return id;
@@ -16,18 +28,6 @@ public class CardEntity {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    @Column(name = "name")
-    private String name;
-    @Column(name = "card_content")
-    private String cardContent;
-    @Column(name = "card_type")
-    private CardType cardType;
-
-
-    public CardEntity(){
-
     }
 
     public String getName() {

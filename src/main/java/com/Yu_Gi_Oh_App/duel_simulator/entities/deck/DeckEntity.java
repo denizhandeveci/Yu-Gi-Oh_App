@@ -12,8 +12,8 @@ public class DeckEntity {
     @Id
     @Column(name = "id")
     private Long id;
-    @OneToMany
-    @JoinColumn(name = "card_id")
-    private List<CardEntity> deckName;
+   // @OneToMany
+    //@JoinColumn(name = "card_id")
+    //private List<CardEntity> deckName;
 
 }

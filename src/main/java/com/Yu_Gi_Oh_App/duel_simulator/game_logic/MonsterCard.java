@@ -12,9 +12,12 @@ public class MonsterCard extends Card {
 
     }
 
-    public MonsterCard(int attackPoints, int defensePoints) {
+    public MonsterCard(int attackPoints, int defensePoints, String cardContent, CardType cardType, String name) {
         this.attackPoints = attackPoints;
         this.defensePoints = defensePoints;
+        super.setCardContent(cardContent);
+        super.setName(name);
+        super.setCardType(cardType);
     }
 
 
@@ -50,20 +53,20 @@ public class MonsterCard extends Card {
 
     }
 
-    public int getAttack() {
+    public int getAttackPoints() {
         return attackPoints;
     }
 
-    public void setAttack(int attack) {
-        this.attackPoints = attack;
+    public void setAttackPoints(int attackPoints) {
+        this.attackPoints = attackPoints;
     }
 
-    public int getDefense() {
+    public int getDefensePoints() {
         return defensePoints;
     }
 
-    public void setDefense(int defense) {
-        this.defensePoints = defense;
+    public void setDefensePoints(int defensePoints) {
+        this.defensePoints = defensePoints;
     }
 
     public CardPosition getCardPosition() {
