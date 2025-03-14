@@ -1,18 +1,22 @@
-package com.Yu_Gi_Oh_App.duel_simulator.entities.cards;
+package com.Yu_Gi_Oh_App.duel_simulator.game_logic.card;
 
 import com.Yu_Gi_Oh_App.duel_simulator.enums.CardType;
-import jakarta.persistence.Column;
-import jakarta.persistence.DiscriminatorValue;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
 
-@Entity
-@Table(name ="trap_cards")
-public class TrapCardEntity extends CardEntity {
+public class TrapCard extends Card {
 
-    //trap card entity spell name
-    @Column(name = "trap_name")
+    //trap card spell name
     private String trapName;
+
+    public TrapCard() {
+
+    }
+
+    public TrapCard(String name, CardType cardType, String cardContent,String trapName ) {
+        this.trapName = trapName;
+        super.setCardType(cardType);
+        super.setCardContent(cardContent);
+        super.setName(name);
+    }
 
     public String getTrapName() {
         return trapName;
@@ -22,7 +26,8 @@ public class TrapCardEntity extends CardEntity {
         this.trapName = trapName;
     }
 
-    public TrapCardEntity(){
+    @Override
+    public void activateEffect() {
 
     }
 
@@ -44,6 +49,16 @@ public class TrapCardEntity extends CardEntity {
     @Override
     public void setName(String name) {
         super.setName(name);
+    }
+
+    @Override
+    public boolean getIsAlive() {
+        return super.getIsAlive();
+    }
+
+    @Override
+    public void setIsAlive(boolean isAlive) {
+        super.setIsAlive(isAlive);
     }
 
     @Override

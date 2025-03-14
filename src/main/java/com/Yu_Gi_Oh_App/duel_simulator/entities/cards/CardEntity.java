@@ -9,12 +9,13 @@ public abstract class CardEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private String name;
-    @Column(name = "card_content")
+    @Column(name = "card_content", nullable = false)
     private String cardContent;
-    @Column(name = "card_type")
+    // Prevent duplication by making this column read-only
     @Enumerated(EnumType.STRING)
+    @Column(name = "card_type", nullable = false)
     private CardType cardType;
 
     public CardEntity(){

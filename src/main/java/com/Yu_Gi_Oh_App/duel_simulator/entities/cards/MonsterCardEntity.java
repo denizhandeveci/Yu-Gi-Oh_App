@@ -1,9 +1,7 @@
 package com.Yu_Gi_Oh_App.duel_simulator.entities.cards;
 
 import com.Yu_Gi_Oh_App.duel_simulator.enums.CardType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name="monster_cards")

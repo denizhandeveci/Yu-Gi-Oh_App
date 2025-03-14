@@ -1,9 +1,9 @@
 package com.Yu_Gi_Oh_App.duel_simulator.mappers;
 
 import com.Yu_Gi_Oh_App.duel_simulator.entities.cards.MonsterCardEntity;
-import com.Yu_Gi_Oh_App.duel_simulator.game_logic.MonsterCard;
+import com.Yu_Gi_Oh_App.duel_simulator.game_logic.card.Card;
+import com.Yu_Gi_Oh_App.duel_simulator.game_logic.card.MonsterCard;
 import com.Yu_Gi_Oh_App.duel_simulator.enums.CardPosition;
-import jakarta.persistence.Column;
 import org.springframework.stereotype.Component;
 
 @Component

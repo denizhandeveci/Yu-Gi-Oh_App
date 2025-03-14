@@ -6,15 +6,14 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "players")
+@Table(name = "playerentity")
 public class PlayerEntity {
     @Id
     @Column(name = "id")
     private Long id;
     @Column(name = "user_name")
     private String userName;
-    @OneToMany
-    @JoinColumn(name = "deck_id")
-    private List<DeckEntity> deck;
+    @OneToMany(mappedBy = "player", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<DeckEntity> decks;
 
 }

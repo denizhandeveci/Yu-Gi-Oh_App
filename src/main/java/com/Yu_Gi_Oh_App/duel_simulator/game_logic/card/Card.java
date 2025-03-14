@@ -1,4 +1,4 @@
-package com.Yu_Gi_Oh_App.duel_simulator.game_logic;
+package com.Yu_Gi_Oh_App.duel_simulator.game_logic.card;
 
 import com.Yu_Gi_Oh_App.duel_simulator.enums.CardType;
 
