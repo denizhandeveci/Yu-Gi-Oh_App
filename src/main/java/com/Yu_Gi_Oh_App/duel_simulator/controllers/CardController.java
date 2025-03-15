@@ -38,4 +38,15 @@ public class CardController {
     public ResponseEntity<MonsterCardEntity> getRandomMonsterCard() {
         return ResponseEntity.ok(cardService.getRandomMonsterCard());
     }
+
+    @GetMapping("/get-random-spell-card")
+    public ResponseEntity<SpellCardEntity> getRandomSpellCard() {
+        return ResponseEntity.ok(cardService.getRandomSpellCard());
+    }
+
+    @GetMapping("/get-random-trap-card")
+    public ResponseEntity<TrapCardEntity> getRandomTrapCard() {
+        return ResponseEntity.ok(cardService.getRandomTrapCard());
+    }
+
 }

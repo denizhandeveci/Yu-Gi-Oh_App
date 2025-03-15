@@ -1,5 +1,6 @@
 package com.Yu_Gi_Oh_App.duel_simulator.controllers;
 
+import com.Yu_Gi_Oh_App.duel_simulator.entities.deck.DeckEntity;
 import com.Yu_Gi_Oh_App.duel_simulator.game_logic.Deck;
 import com.Yu_Gi_Oh_App.duel_simulator.services.DeckService;
 import org.springframework.http.ResponseEntity;
@@ -14,8 +15,8 @@ public class DeckController {
         this.deckService = deckService;
     }
 
-    @PostMapping("/create-deck")
-    public ResponseEntity<Deck> createDeck(@PathVariable String deckName) {
+    @PostMapping("/create-deck/{deckName}")
+    public ResponseEntity<DeckEntity> createDeck(@PathVariable String deckName) {
         return ResponseEntity.ok(deckService.createDeck(deckName));
     }
 }

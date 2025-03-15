@@ -1,6 +1,10 @@
 package com.Yu_Gi_Oh_App.duel_simulator.services;
 
 import com.Yu_Gi_Oh_App.duel_simulator.entities.cards.CardEntity;
+import com.Yu_Gi_Oh_App.duel_simulator.entities.cards.MonsterCardEntity;
+import com.Yu_Gi_Oh_App.duel_simulator.entities.cards.SpellCardEntity;
+import com.Yu_Gi_Oh_App.duel_simulator.entities.cards.TrapCardEntity;
+import com.Yu_Gi_Oh_App.duel_simulator.entities.deck.DeckEntity;
 import com.Yu_Gi_Oh_App.duel_simulator.enums.CardType;
 import com.Yu_Gi_Oh_App.duel_simulator.game_logic.Deck;
 import com.Yu_Gi_Oh_App.duel_simulator.game_logic.card.Card;
@@ -39,21 +43,48 @@ public class DeckService {
         this.spellCardMapper = spellCardMapper;
     }
 
-    public Deck createDeck(String deckName) {
-        Deck deck = new Deck();
-        List<Card> cardList = new ArrayList<>();
+    public List<DeckEntity> getDeck(List<Long> deckId){
+        List<DeckEntity> deckEntityList = new ArrayList<>();
+        for(Long id : deckId) {
+            deckEntityList.add(deckRepository.findById(id).orElseThrow());
+        }
+        return deckEntityList;
+    }
+
+    public DeckEntity createDeck(String deckName) {
+        DeckEntity deckEntity = new DeckEntity();
+        List<CardEntity> cardList = new ArrayList<>();
         Random randomCardNumber = new Random();
         for(int i = 0; i < 10; i++) {
             int selectedCardType = randomCardNumber.nextInt(0,3);
             Long selectedCardId = randomCardNumber.nextLong(1,11);
             switch (selectedCardType){
-                case 0 -> cardList.add(monsterCardMapper.toMonsterCard(monsterCardRepository.findById(selectedCardId).orElseThrow()));
-                case 1 -> cardList.add(spellCardMapper.toSpellCard(spellCardRepository.findById(selectedCardId).orElseThrow()));
-                case 2 -> cardList.add(trapCardMapper.toTrapCard(trapCardRepository.findById(selectedCardId).orElseThrow()));
+                case 0 -> cardList.add(monsterCardRepository.findById(selectedCardId).orElseThrow());
+                case 1 -> cardList.add((spellCardRepository.findById(selectedCardId).orElseThrow()));
+                case 2 -> cardList.add((trapCardRepository.findById(selectedCardId).orElseThrow()));
             }
         }
-        deck.setDeck(cardList);
-        deck.setDeckName(deckName);
-        return null; //deckRepository.save(deck);
+
+        List<MonsterCardEntity> monsterCardEntities = new ArrayList<>();
+        List<SpellCardEntity> spellCardEntities = new ArrayList<>();
+        List<TrapCardEntity> trapCardEntities = new ArrayList<>();
+
+        for(CardEntity card : cardList){
+            if(card.getCardType().equals(CardType.MONSTER_CARD)){
+                monsterCardEntities.add((MonsterCardEntity) card);
+            }
+            else if(card.getCardType().equals(CardType.SPELL_CARD)){
+                spellCardEntities.add((SpellCardEntity) card);
+            }
+            else{
+                trapCardEntities.add((TrapCardEntity) card);
+            }
+        }
+
+        deckEntity.setDeckName(deckName);
+        deckEntity.setMonsterCardsDeck(monsterCardEntities);
+        deckEntity.setSpellCardsDeck(spellCardEntities);
+        deckEntity.setTrapCardsDeck(trapCardEntities);
+        return deckRepository.save(deckEntity);
     }
 }

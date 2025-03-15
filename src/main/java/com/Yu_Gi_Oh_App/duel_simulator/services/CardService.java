@@ -67,4 +67,20 @@ public class CardService {
         Long selectedId = random.nextLong(1,(dataTableSize+1));
         return monsterCardRepository.findById(selectedId).orElse(null);
     }
+
+    public SpellCardEntity getRandomSpellCard() {
+        Long dataTableSize = spellCardRepository.count();
+        Random random = new Random();
+        Long selectedId = random.nextLong(1,(dataTableSize+1));
+        return spellCardRepository.findById(selectedId).orElse(null);
+    }
+
+    public TrapCardEntity getRandomTrapCard() {
+        Long dataTableSize = trapCardRepository.count();
+        Random random = new Random();
+        Long selectedId = random.nextLong(1,(dataTableSize+1));
+        return trapCardRepository.findById(selectedId).orElse(null);
+    }
+
+
 }

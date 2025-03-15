@@ -9,6 +9,7 @@ public class Deck {
   //  private Long id;
     private String deckName;
     private List<Card> deck;
+    private String playerName;
 
     public Deck(List<Card> deck, String deckName) {
         this.deck = deck;
@@ -17,6 +18,14 @@ public class Deck {
 
     public Deck() {
 
+    }
+
+    public String getPlayerName() {
+        return playerName;
+    }
+
+    public void setPlayerName(String playerName) {
+        this.playerName = playerName;
     }
 
     public String getDeckName() {

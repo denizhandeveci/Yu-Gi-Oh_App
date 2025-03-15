@@ -7,7 +7,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 public class Player {
-    private Long id;
+
     private String userName;
     private Deck deck;
 
@@ -15,13 +15,6 @@ public class Player {
 
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Deck getDeck() {
         return deck;
@@ -31,11 +24,11 @@ public class Player {
         this.deck = deck;
     }
 
-    public String getUserName() {
+    public String getPlayerName() {
         return userName;
     }
 
-    public void setUserName(String userName) {
+    public void setPlayerName(String userName) {
         this.userName = userName;
     }
 }

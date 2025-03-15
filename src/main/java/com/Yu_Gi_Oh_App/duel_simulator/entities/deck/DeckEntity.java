@@ -19,12 +19,12 @@ public class DeckEntity {
     private String deckName;
 
     @ManyToOne
-    @JoinColumn(name = "player_id")
+    @JoinColumn(name = "player_id", nullable = false)
     private PlayerEntity player;
 
     @ManyToMany
     @JoinTable(
-            name = "deck_cards",
+            name = "deck_monster_cards", // Separate table for monster cards
             joinColumns = @JoinColumn(name = "deck_id"),
             inverseJoinColumns = @JoinColumn(name = "card_id")
     )
@@ -32,7 +32,7 @@ public class DeckEntity {
 
     @ManyToMany
     @JoinTable(
-            name = "deck_cards",
+            name = "deck_trap_cards", // Separate table for trap cards
             joinColumns = @JoinColumn(name = "deck_id"),
             inverseJoinColumns = @JoinColumn(name = "card_id")
     )
@@ -40,7 +40,7 @@ public class DeckEntity {
 
     @ManyToMany
     @JoinTable(
-            name = "deck_cards",
+            name = "deck_spell_cards", // Separate table for spell cards
             joinColumns = @JoinColumn(name = "deck_id"),
             inverseJoinColumns = @JoinColumn(name = "card_id")
     )
