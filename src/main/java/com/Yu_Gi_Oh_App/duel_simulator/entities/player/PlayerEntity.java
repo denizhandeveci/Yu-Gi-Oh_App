@@ -3,18 +3,20 @@ package com.Yu_Gi_Oh_App.duel_simulator.entities.player;
 import com.Yu_Gi_Oh_App.duel_simulator.entities.deck.DeckEntity;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "playerentity")
 public class PlayerEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
     @Column(name = "user_name", nullable = false)
     private String userName;
     @OneToMany(mappedBy = "player", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<DeckEntity> decks;
+    private List<DeckEntity> decks = new ArrayList<>();
 
     public PlayerEntity() {}
 

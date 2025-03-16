@@ -18,8 +18,8 @@ public class PlayerController {
     }
 
     @PostMapping("/create-player/{userName}")
-    public ResponseEntity<PlayerEntity> createPlayer(@PathVariable String userName, @RequestBody List<Long> deckIds ){
-        return ResponseEntity.ok(playerService.createPlayer(userName, deckIds));
+    public ResponseEntity<PlayerEntity> createPlayer(@PathVariable String userName ){
+        return ResponseEntity.ok(playerService.createPlayer(userName));
     }
 
 }

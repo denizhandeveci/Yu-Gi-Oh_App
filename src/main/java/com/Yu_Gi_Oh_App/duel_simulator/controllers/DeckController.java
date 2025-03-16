@@ -7,6 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/deck-api")
 public class DeckController {
@@ -15,8 +17,9 @@ public class DeckController {
         this.deckService = deckService;
     }
 
-    @PostMapping("/create-deck/{deckName}")
-    public ResponseEntity<DeckEntity> createDeck(@PathVariable String deckName) {
-        return ResponseEntity.ok(deckService.createDeck(deckName));
+    @PostMapping("/create-deck/{deckName}/{playerID}")
+    public ResponseEntity<DeckEntity> createDeck(@PathVariable String deckName, @PathVariable Long playerID) {
+        return ResponseEntity.ok(deckService.createDeck(deckName, playerID));
     }
+
 }

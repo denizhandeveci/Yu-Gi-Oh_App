@@ -24,12 +24,9 @@ public class PlayerService {
         this.deckService = deckService;
     }
 
-    public PlayerEntity createPlayer(String userName, List<Long> deckId) {
+    public PlayerEntity createPlayer(String userName) {
         PlayerEntity playerEntity = new PlayerEntity();
         playerEntity.setUserName(userName);
-        List<DeckEntity> deckEntityList = new ArrayList<>();
-        deckEntityList.addAll(deckService.getDeck(deckId));
-        playerEntity.setDecks(deckEntityList);
         return playerRepository.save(playerEntity);
     }
 
