@@ -10,6 +10,8 @@ import com.Yu_Gi_Oh_App.duel_simulator.services.CardService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/card-api")
 public class CardController {
@@ -23,6 +25,25 @@ public class CardController {
     public ResponseEntity<MonsterCardEntity> createMonsterCard(@RequestBody MonsterCard monsterCard) {
         return ResponseEntity.ok(cardService.createMonsterCard(monsterCard));
     }
+
+    @PostMapping("/create-monster-card-list")
+    public ResponseEntity<List<MonsterCardEntity>> createMonsterCardList(@RequestBody List<MonsterCard> monsterCards){
+        return ResponseEntity.ok(cardService.createMonsterCardList(monsterCards));
+    }
+    @GetMapping("/get-monster-card/{id}")
+    public ResponseEntity<MonsterCardEntity> getMonsterCardById(@PathVariable Long id){
+        return ResponseEntity.ok(cardService.getMonsterCardById(id));
+    }
+    @DeleteMapping("/delete-monster-card/{id}")
+    public String deleteMonsterCardById(@PathVariable Long id){
+        return cardService.deleteMonsterCardById(id);
+    }
+
+    @GetMapping("/sort-monster-card-ids")
+    public void sortMonsterCardIds(){
+        cardService.updateMonsterCardIdsSafely();
+    }
+
 
     @PostMapping("create-spell-card")
     public ResponseEntity<SpellCardEntity> createSpellCard(@RequestBody SpellCard spellCard) {
