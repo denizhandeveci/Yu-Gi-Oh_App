@@ -1,10 +1,11 @@
 package com.Yu_Gi_Oh_App.duel_simulator.entities.cards;
 
+import com.Yu_Gi_Oh_App.duel_simulator.entities.deck.DeckEntity;
 import com.Yu_Gi_Oh_App.duel_simulator.enums.CardType;
-import jakarta.persistence.Column;
-import jakarta.persistence.DiscriminatorValue;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name ="trap_cards")
@@ -13,6 +14,8 @@ public class TrapCardEntity extends CardEntity {
     //trap card entity spell name
     @Column(name = "trap_name")
     private String trapName;
+
+
 
     public String getTrapName() {
         return trapName;

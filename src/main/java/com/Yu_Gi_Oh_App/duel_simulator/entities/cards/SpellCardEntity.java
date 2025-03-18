@@ -1,16 +1,20 @@
 package com.Yu_Gi_Oh_App.duel_simulator.entities.cards;
 
+import com.Yu_Gi_Oh_App.duel_simulator.entities.deck.DeckEntity;
 import com.Yu_Gi_Oh_App.duel_simulator.enums.CardType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.PrimaryKeyJoinColumn;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "spell_cards")
 public class SpellCardEntity extends CardEntity {
     @Column(name = "spell_name")
     private String spellName;
+
+
+
 
     public String getSpellName() {
         return spellName;

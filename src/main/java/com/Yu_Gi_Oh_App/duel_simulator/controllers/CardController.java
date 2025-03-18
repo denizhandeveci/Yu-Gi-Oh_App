@@ -39,9 +39,23 @@ public class CardController {
         return cardService.deleteMonsterCardById(id);
     }
 
+    @DeleteMapping("/delete-all-monster-cards")
+    public ResponseEntity<String> deleteAllMonsterCards() {
+        String response = cardService.deleteAllMonsterCards();
+        return ResponseEntity.ok(response);
+    }
+
+
+
     @GetMapping("/sort-monster-card-ids")
     public void sortMonsterCardIds(){
         cardService.updateMonsterCardIdsSafely();
+    }
+
+    @PutMapping("/update-a-monster-card/{id}")
+    public ResponseEntity<MonsterCardEntity> updateMonsterCard(@PathVariable Long id, @RequestBody MonsterCard monsterCard) {
+        MonsterCardEntity updatedCard = cardService.updateMonsterCard(id, monsterCard);
+        return ResponseEntity.ok(updatedCard);
     }
 
 
@@ -50,9 +64,38 @@ public class CardController {
         return ResponseEntity.ok(cardService.createSpellCard(spellCard));
     }
 
+    @PostMapping("create-spell-card-list")
+    public ResponseEntity<List<SpellCardEntity>> createSpellCardList(@RequestBody List<SpellCard> spellCardList){
+        return ResponseEntity.ok(cardService.createSpellCardList(spellCardList));
+    }
+
+    @GetMapping("get-spell-card/{id}")
+    public ResponseEntity<SpellCardEntity> getSpellCardById(@PathVariable Long id){
+        return ResponseEntity.ok(cardService.getSpellCardById(id));
+    }
+
+    @DeleteMapping("delete-spell-card/{id}")
+    public String deleteSpellCardById(@PathVariable Long id){
+        return cardService.deleteSpellCardById(id);
+    }
+    @DeleteMapping("/delete-all-spell-cards")
+    public String deleteAllSpellCards(){
+        return cardService.deleteAllSpellCards();
+    }
+
     @PostMapping("create-trap-card")
     public ResponseEntity<TrapCardEntity> createTrapCard(@RequestBody TrapCard trapCard) {
         return ResponseEntity.ok(cardService.createTrapCard(trapCard));
+    }
+
+    @GetMapping("get-trap-card/{id}")
+    public ResponseEntity<TrapCardEntity> getTrapCardById(@PathVariable Long id){
+        return ResponseEntity.ok(cardService.getTrapCardById(id));
+    }
+
+    @DeleteMapping("delete-trap-card/{id}")
+    public String deleteTrapCardById(@PathVariable Long id){
+        return cardService.deleteTrapCardById(id);
     }
 
     @GetMapping("/get-random-monster-card")

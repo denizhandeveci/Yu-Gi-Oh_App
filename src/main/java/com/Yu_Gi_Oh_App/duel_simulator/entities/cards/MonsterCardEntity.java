@@ -1,7 +1,11 @@
 package com.Yu_Gi_Oh_App.duel_simulator.entities.cards;
 
+import com.Yu_Gi_Oh_App.duel_simulator.entities.deck.DeckEntity;
 import com.Yu_Gi_Oh_App.duel_simulator.enums.CardType;
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="monster_cards")
@@ -10,6 +14,8 @@ public class MonsterCardEntity extends CardEntity {
     private int attack;
     @Column(name="defense")
     private int defense;
+
+
 
     @Override
     public Long getId() {
