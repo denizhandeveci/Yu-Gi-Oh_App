@@ -34,6 +34,12 @@ public class CardController {
     public ResponseEntity<MonsterCardEntity> getMonsterCardById(@PathVariable Long id){
         return ResponseEntity.ok(cardService.getMonsterCardById(id));
     }
+
+    @GetMapping("/get-random-monster-card")
+    public ResponseEntity<MonsterCardEntity> getRandomMonsterCard() {
+        return ResponseEntity.ok(cardService.getRandomMonsterCard());
+    }
+
     @DeleteMapping("/delete-monster-card/{id}")
     public String deleteMonsterCardById(@PathVariable Long id){
         return cardService.deleteMonsterCardById(id);
@@ -45,8 +51,6 @@ public class CardController {
         return ResponseEntity.ok(response);
     }
 
-
-
     @GetMapping("/sort-monster-card-ids")
     public void sortMonsterCardIds(){
         cardService.updateMonsterCardIdsSafely();
@@ -55,6 +59,7 @@ public class CardController {
     @PutMapping("/update-a-monster-card/{id}")
     public ResponseEntity<MonsterCardEntity> updateMonsterCard(@PathVariable Long id, @RequestBody MonsterCard monsterCard) {
         MonsterCardEntity updatedCard = cardService.updateMonsterCard(id, monsterCard);
+        //cardService.updateMonsterCardIdsSafely();
         return ResponseEntity.ok(updatedCard);
     }
 
@@ -74,6 +79,11 @@ public class CardController {
         return ResponseEntity.ok(cardService.getSpellCardById(id));
     }
 
+    @GetMapping("/get-random-spell-card")
+    public ResponseEntity<SpellCardEntity> getRandomSpellCard() {
+        return ResponseEntity.ok(cardService.getRandomSpellCard());
+    }
+
     @DeleteMapping("delete-spell-card/{id}")
     public String deleteSpellCardById(@PathVariable Long id){
         return cardService.deleteSpellCardById(id);
@@ -83,14 +93,25 @@ public class CardController {
         return cardService.deleteAllSpellCards();
     }
 
-    @PostMapping("create-trap-card")
+    @PostMapping("/create-trap-card")
     public ResponseEntity<TrapCardEntity> createTrapCard(@RequestBody TrapCard trapCard) {
         return ResponseEntity.ok(cardService.createTrapCard(trapCard));
     }
 
+    @PostMapping("/create-trap-card-list")
+    public ResponseEntity<List<TrapCardEntity>> createTrapCardList(@RequestBody List<TrapCard> trapCardList){
+        return ResponseEntity.ok(cardService.createTrapCardList(trapCardList));
+    }
+
+
     @GetMapping("get-trap-card/{id}")
     public ResponseEntity<TrapCardEntity> getTrapCardById(@PathVariable Long id){
         return ResponseEntity.ok(cardService.getTrapCardById(id));
+    }
+
+    @GetMapping("/get-random-trap-card")
+    public ResponseEntity<TrapCardEntity> getRandomTrapCard() {
+        return ResponseEntity.ok(cardService.getRandomTrapCard());
     }
 
     @DeleteMapping("delete-trap-card/{id}")
@@ -98,19 +119,10 @@ public class CardController {
         return cardService.deleteTrapCardById(id);
     }
 
-    @GetMapping("/get-random-monster-card")
-    public ResponseEntity<MonsterCardEntity> getRandomMonsterCard() {
-        return ResponseEntity.ok(cardService.getRandomMonsterCard());
-    }
 
-    @GetMapping("/get-random-spell-card")
-    public ResponseEntity<SpellCardEntity> getRandomSpellCard() {
-        return ResponseEntity.ok(cardService.getRandomSpellCard());
-    }
-
-    @GetMapping("/get-random-trap-card")
-    public ResponseEntity<TrapCardEntity> getRandomTrapCard() {
-        return ResponseEntity.ok(cardService.getRandomTrapCard());
+    @DeleteMapping("/delete-all-trap-cards")
+    public String deleteAllTrapCards(){
+        return cardService.deleteAllTrapCards();
     }
 
 }

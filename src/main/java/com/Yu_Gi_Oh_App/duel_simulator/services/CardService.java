@@ -91,21 +91,16 @@ public class CardService {
         }
     }
 
-    public MonsterCardEntity updateMonsterCard(Long id,MonsterCard monsterCard){
-        MonsterCardEntity monsterCardEntity = monsterCardRepository.findById(id).orElse(null);
-        MonsterCard cardToBeUpdated = monsterCardMapper.toMonsterCard(monsterCardEntity);
-        long originalId = monsterCardEntity.getId();
-        monsterCardRepository.delete(monsterCardEntity);
-        cardToBeUpdated.setId(originalId);
-        cardToBeUpdated.setName(monsterCard.getName());
-        cardToBeUpdated.setAttackPoints(monsterCard.getAttackPoints());
-        cardToBeUpdated.setDefensePoints(monsterCard.getDefensePoints());
-        cardToBeUpdated.setCardContent(monsterCard.getCardContent());
-        cardToBeUpdated.setCardType(monsterCard.getCardType());
-        MonsterCardEntity updatedCard = monsterCardMapper.toMonsterCardEntity(cardToBeUpdated);
 
-        return monsterCardRepository.save(updatedCard);
-
+    public MonsterCardEntity updateMonsterCard(Long id, MonsterCard monsterCard) {
+        MonsterCardEntity monsterCardEntity = monsterCardRepository.findById(id).orElseThrow(
+                () -> new EntityNotFoundException("MonsterCard with ID " + id + " not found"));
+        monsterCardEntity.setName(monsterCard.getName());
+        monsterCardEntity.setAttackPoints(monsterCard.getAttackPoints());
+        monsterCardEntity.setDefensePoints(monsterCard.getDefensePoints());
+        monsterCardEntity.setCardContent(monsterCard.getCardContent());
+        monsterCardEntity.setCardType(monsterCard.getCardType());
+        return monsterCardRepository.save(monsterCardEntity);
     }
 
     public String deleteAllMonsterCards(){
@@ -174,7 +169,13 @@ public class CardService {
         return trapCardRepository.save(trapCardEntity);
     }
 
-
+    public List<TrapCardEntity> createTrapCardList(List<TrapCard> trapCardList){
+        List<TrapCardEntity> trapCardEntityList = new ArrayList<>();
+        for(TrapCard elem : trapCardList){
+            trapCardEntityList.add(trapCardMapper.toTrapCardEntity(elem));
+        }
+        return trapCardRepository.saveAll(trapCardEntityList);
+    }
 
     public TrapCardEntity getRandomTrapCard() {
         Long dataTableSize = trapCardRepository.count();
@@ -197,6 +198,14 @@ public class CardService {
             return "Entity with ID " + id + " not found.";
         }
     }
-
+    public String deleteAllTrapCards(){
+        Long count = trapCardRepository.count();
+        if(count == 0){
+            return "No trap cards to delete";
+        }else{
+            trapCardRepository.deleteAll();
+            return count + " trap cards have been deleted";
+        }
+    }
 
 }

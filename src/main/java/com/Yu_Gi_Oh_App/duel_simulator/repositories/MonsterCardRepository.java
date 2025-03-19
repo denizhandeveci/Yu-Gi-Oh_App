@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface MonsterCardRepository extends JpaRepository<MonsterCardEntity,Long> {
 
@@ -29,6 +31,10 @@ public interface MonsterCardRepository extends JpaRepository<MonsterCardEntity,L
         @Transactional
         @Query(value = "DROP TEMPORARY TABLE temp_ids", nativeQuery = true)
         void dropTempTable();
+
+
+        @Query("SELECT m.id FROM MonsterCardEntity m")
+        List<Long> findAllIds();
     }
 
 

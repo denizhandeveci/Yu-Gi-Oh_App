@@ -57,17 +57,38 @@ public class DeckService {
 //        return null;
 //    }
 
+    private List<Long> getAllMonsterCardIds() {
+        return monsterCardRepository.findAllIds();
+    }
+    private List<Long> getAllSpellCardIds() {
+        return spellCardRepository.findAllIds();
+    }
+    private List<Long> getAllTrapCardIds() {
+        return trapCardRepository.findAllIds();
+    }
+
+
     public DeckEntity createDeck(String deckName, Long playerID) {
         DeckEntity deckEntity = new DeckEntity();
         List<CardEntity> cardList = new ArrayList<>();
-        Random randomCardNumber = new Random();
+        Random random = new Random();
+        List<Long> monsterCardIdList = getAllMonsterCardIds();
+        List<Long> spellCardIdList = getAllSpellCardIds();
+        List<Long> trapCardIdList = getAllTrapCardIds();
+
         for (int i = 0; i < 10; i++) {
-            int selectedCardType = randomCardNumber.nextInt(0, 3);
-            Long selectedCardId = randomCardNumber.nextLong(1, 11);
+            int selectedCardType = random.nextInt(0, 3);
+            Long randomMonsterId = random.nextLong(monsterCardIdList.size());
+            Long randomSpellId = random.nextLong(spellCardIdList.size());
+            Long randomTrapId = random.nextLong(trapCardIdList.size());
+            randomMonsterId = monsterCardIdList.get(randomMonsterId.intValue());
+            randomSpellId = spellCardIdList.get(randomSpellId.intValue());
+            randomTrapId = trapCardIdList.get(randomTrapId.intValue());
+
             switch (selectedCardType) {
-                case 0 -> cardList.add(monsterCardRepository.findById(selectedCardId).orElseThrow());
-                case 1 -> cardList.add((spellCardRepository.findById(selectedCardId).orElseThrow()));
-                case 2 -> cardList.add((trapCardRepository.findById(selectedCardId).orElseThrow()));
+                case 0 -> cardList.add(monsterCardRepository.findById(randomMonsterId).orElseThrow());
+                case 1 -> cardList.add((spellCardRepository.findById(randomSpellId).orElseThrow()));
+                case 2 -> cardList.add((trapCardRepository.findById(randomTrapId).orElseThrow()));
             }
         }
 

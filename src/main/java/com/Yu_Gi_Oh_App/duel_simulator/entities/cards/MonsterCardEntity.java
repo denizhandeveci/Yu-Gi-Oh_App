@@ -11,9 +11,9 @@ import java.util.List;
 @Table(name="monster_cards")
 public class MonsterCardEntity extends CardEntity {
     @Column(name="attack")
-    private int attack;
+    private int attackPoints;
     @Column(name="defense")
-    private int defense;
+    private int defensePoints;
 
 
 
@@ -61,20 +61,20 @@ public class MonsterCardEntity extends CardEntity {
         super.setCardType(cardType);
     }
 
-    public int getAttack() {
-        return attack;
+    public int getAttackPoints() {
+        return attackPoints;
     }
 
-    public void setAttack(int attack) {
-        this.attack = attack;
+    public void setAttackPoints(int attack) {
+        this.attackPoints = attack;
     }
 
-    public int getDefense() {
-        return defense;
+    public int getDefensePoints() {
+        return defensePoints;
     }
 
-    public void setDefense(int defense) {
-        this.defense = defense;
+    public void setDefensePoints(int defense) {
+        this.defensePoints = defense;
     }
 
 }

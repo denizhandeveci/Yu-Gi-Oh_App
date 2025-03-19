@@ -19,8 +19,8 @@ public class MonsterCardMapper {
         card.setCardType(entity.getCardType());
 
         // Set attack and defense
-        card.setAttackPoints(entity.getAttack());
-        card.setDefensePoints(entity.getDefense());
+        card.setAttackPoints(entity.getAttackPoints());
+        card.setDefensePoints(entity.getDefensePoints());
 
         // Default position (you can customize this if needed)
         card.setCardPosition(CardPosition.ATTACK_POSITION);
@@ -38,8 +38,8 @@ public class MonsterCardMapper {
         entity.setCardType(card.getCardType());
 
         // Set attack and defense
-        entity.setAttack(card.getAttackPoints());
-        entity.setDefense(card.getDefensePoints());
+        entity.setAttackPoints(card.getAttackPoints());
+        entity.setDefensePoints(card.getDefensePoints());
 
         return entity;
     }
